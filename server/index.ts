@@ -420,11 +420,11 @@ export async function createServer() {
   app.use((req, res, next) => {
     // If the request is not for an API route and Express didn't handle it,
     // pass it to the next middleware (Vite's static file server)
-    if (!req.path.startsWith('/api')) {
+    if (!req.path.startsWith("/api")) {
       return next();
     }
     // If it's an API route that wasn't handled, return 404
-    res.status(404).json({ error: 'API route not found' });
+    res.status(404).json({ error: "API route not found" });
   });
 
   return app;
