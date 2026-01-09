@@ -415,5 +415,17 @@ export async function createServer() {
   );
   app.get("/api/debug/simple-ambulance-test", handleSimpleAmbulanceTest);
 
+  // Catch-all middleware: let Vite dev server handle non-API routes
+  // This is important for SPA routing in development
+  app.use((req, res, next) => {
+    // If the request is not for an API route and Express didn't handle it,
+    // pass it to the next middleware (Vite's static file server)
+    if (!req.path.startsWith("/api")) {
+      return next();
+    }
+    // If it's an API route that wasn't handled, return 404
+    res.status(404).json({ error: "API route not found" });
+  });
+
   return app;
 }
