@@ -81,6 +81,14 @@ export default function DoctorProfile() {
 
   const fetchUserProfile = async () => {
     try {
+      // Check if there's saved profile data in localStorage
+      const savedProfile = localStorage.getItem('doctorProfile');
+      if (savedProfile) {
+        setProfileData(JSON.parse(savedProfile));
+        setLoading(false);
+        return;
+      }
+
       const response = await authApi.getProfile();
       if (response.data?.user) {
         const user = response.data.user;
@@ -90,10 +98,10 @@ export default function DoctorProfile() {
           email: user.email || userEmail,
           phone: user.phone || userPhone,
           // Add doctor-specific fields if they exist in user data
-          specialization: user.specialization || "",
+          specialization: user.specialization || "Intern",
           licenseNumber: user.license_number || "",
-          experienceYears: user.experience_years?.toString() || "",
-          consultationFee: user.consultation_fee?.toString() || "",
+          experienceYears: user.experience_years?.toString() || "0",
+          consultationFee: user.consultation_fee?.toString() || "0",
         }));
       }
     } catch (error) {
@@ -103,10 +111,20 @@ export default function DoctorProfile() {
     }
   };
 
-  const handleSave = () => {
-    setIsEditing(false);
-    // Here you would typically save to backend
-    alert("Profile updated successfully!");
+  const handleSave = async () => {
+    try {
+      // Save to localStorage for persistence
+      localStorage.setItem('doctorProfile', JSON.stringify(profileData));
+
+      // Optionally, also try to save to backend
+      // const response = await authApi.updateProfile(profileData);
+
+      setIsEditing(false);
+      alert("Profile updated successfully!");
+    } catch (error) {
+      console.error('Error saving profile:', error);
+      alert("Failed to save profile. Please try again.");
+    }
   };
 
   const handleCancel = () => {
