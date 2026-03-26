@@ -128,7 +128,7 @@ export default function Login() {
               <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
                 <Activity className="w-7 h-7 text-white" />
               </div>
-              <span className="ml-3 text-2xl font-bold">ML Support</span>
+              <span className="ml-3 text-2xl font-bold">AIIMS, New Delhi</span>
             </div>
             <h1 className="text-4xl font-bold mb-4 leading-tight">
               Revolutionizing Healthcare Management
@@ -166,7 +166,7 @@ export default function Login() {
               <Activity className="w-6 h-6 text-white" />
             </div>
             <span className="ml-3 text-xl font-bold text-gray-900">
-              ML Support
+              AIIMS, New Delhi
             </span>
           </div>
 

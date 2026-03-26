@@ -115,7 +115,7 @@ export default function ForgotPassword() {
               <Activity className="w-6 h-6 text-white" />
             </div>
             <div className="ml-3">
-              <h1 className="text-2xl font-bold text-gray-900">ML Support</h1>
+              <h1 className="text-2xl font-bold text-gray-900">AIIMS, New Delhi</h1>
             </div>
           </div>
           <CardTitle className="text-2xl font-bold text-gray-900">

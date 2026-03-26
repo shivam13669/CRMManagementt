@@ -356,7 +356,7 @@ export default function Signup() {
               <Activity className="w-6 h-6 text-white" />
             </div>
             <span className="ml-3 text-xl font-bold text-gray-900">
-              ML Support
+              AIIMS, New Delhi
             </span>
           </div>
 
@@ -742,13 +742,13 @@ export default function Signup() {
               <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
                 <Activity className="w-7 h-7 text-white" />
               </div>
-              <span className="ml-3 text-2xl font-bold">ML Support</span>
+              <span className="ml-3 text-2xl font-bold">AIIMS, New Delhi</span>
             </div>
             <h1 className="text-4xl font-bold mb-4 leading-tight">
               Everything you need to manage healthcare
             </h1>
             <p className="text-xl text-white/90 leading-relaxed mb-8">
-              Join thousands of healthcare providers who trust ML Support for
+              Join thousands of healthcare providers who trust AIIMS, New Delhi for
               their daily operations.
             </p>
           </div>
