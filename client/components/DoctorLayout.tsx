@@ -227,7 +227,7 @@ export function DoctorLayout({ children }: DoctorLayoutProps) {
             </div>
             <div>
               <div className="font-medium text-gray-900">Dr. {userName}</div>
-              <div className="text-sm text-blue-600">Doctor</div>
+              <div className="text-sm text-blue-600">Intern</div>
             </div>
           </div>
         </div>
