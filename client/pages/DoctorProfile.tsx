@@ -52,10 +52,10 @@ export default function DoctorProfile() {
     phone: userPhone,
 
     // Doctor specific fields from signup - these should be populated if available
-    specialization: "",
+    specialization: "Intern",
     licenseNumber: "",
-    experienceYears: "",
-    consultationFee: "",
+    experienceYears: "0",
+    consultationFee: "0",
 
     // Fields that will be empty initially (not asked during signup)
     dateOfBirth: "",
@@ -115,8 +115,9 @@ export default function DoctorProfile() {
   };
 
   const specializations = [
+    "Intern",
     "Cardiology",
-    "Neurology", 
+    "Neurology",
     "Oncology",
     "Pediatrics",
     "Orthopedics",
@@ -308,22 +309,6 @@ export default function DoctorProfile() {
                         setProfileData((prev) => ({
                           ...prev,
                           phone: e.target.value,
-                        }))
-                      }
-                      disabled={!isEditing}
-                      className="mt-1"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="dateOfBirth">Date of Birth</Label>
-                    <Input
-                      id="dateOfBirth"
-                      type="date"
-                      value={profileData.dateOfBirth}
-                      onChange={(e) =>
-                        setProfileData((prev) => ({
-                          ...prev,
-                          dateOfBirth: e.target.value,
                         }))
                       }
                       disabled={!isEditing}
