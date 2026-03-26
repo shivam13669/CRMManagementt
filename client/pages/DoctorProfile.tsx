@@ -371,23 +371,6 @@ export default function DoctorProfile() {
                     />
                   </div>
                 </div>
-                <div>
-                  <Label htmlFor="address">Address</Label>
-                  <Textarea
-                    id="address"
-                    value={profileData.address}
-                    onChange={(e) =>
-                      setProfileData((prev) => ({
-                        ...prev,
-                        address: e.target.value,
-                      }))
-                    }
-                    disabled={!isEditing}
-                    className="mt-1"
-                    rows={3}
-                    placeholder="Enter your address"
-                  />
-                </div>
               </CardContent>
             </Card>
 
@@ -412,7 +395,7 @@ export default function DoctorProfile() {
                           licenseNumber: e.target.value,
                         }))
                       }
-                      disabled={!isEditing}
+                      disabled={true}
                       className="mt-1"
                     />
                   </div>
@@ -426,7 +409,7 @@ export default function DoctorProfile() {
                           specialization: value,
                         }))
                       }
-                      disabled={!isEditing}
+                      disabled={true}
                     >
                       <SelectTrigger className="mt-1">
                         <SelectValue placeholder="Select specialization" />
@@ -451,7 +434,7 @@ export default function DoctorProfile() {
                           subSpecialty: e.target.value,
                         }))
                       }
-                      disabled={!isEditing}
+                      disabled={true}
                       className="mt-1"
                       placeholder="Enter sub-specialty"
                     />
@@ -467,7 +450,7 @@ export default function DoctorProfile() {
                           consultationFee: e.target.value,
                         }))
                       }
-                      disabled={!isEditing}
+                      disabled={true}
                       className="mt-1"
                     />
                   </div>
@@ -482,24 +465,8 @@ export default function DoctorProfile() {
                           experienceYears: e.target.value,
                         }))
                       }
-                      disabled={!isEditing}
+                      disabled={true}
                       className="mt-1"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="graduationYear">Graduation Year</Label>
-                    <Input
-                      id="graduationYear"
-                      value={profileData.graduationYear}
-                      onChange={(e) =>
-                        setProfileData((prev) => ({
-                          ...prev,
-                          graduationYear: e.target.value,
-                        }))
-                      }
-                      disabled={!isEditing}
-                      className="mt-1"
-                      placeholder="Enter graduation year"
                     />
                   </div>
                 </div>
@@ -514,7 +481,7 @@ export default function DoctorProfile() {
                         medicalDegree: e.target.value,
                       }))
                     }
-                    disabled={!isEditing}
+                    disabled={true}
                     className="mt-1"
                     placeholder="MBBS, MD, etc."
                   />
@@ -530,7 +497,7 @@ export default function DoctorProfile() {
                         institution: e.target.value,
                       }))
                     }
-                    disabled={!isEditing}
+                    disabled={true}
                     className="mt-1"
                     placeholder="Enter institution name"
                   />
@@ -546,7 +513,7 @@ export default function DoctorProfile() {
                         certifications: e.target.value,
                       }))
                     }
-                    disabled={!isEditing}
+                    disabled={true}
                     className="mt-1"
                     rows={3}
                     placeholder="List your certifications, awards, and recognitions..."
@@ -563,7 +530,7 @@ export default function DoctorProfile() {
                         hospitalAffiliations: e.target.value,
                       }))
                     }
-                    disabled={!isEditing}
+                    disabled={true}
                     className="mt-1"
                     rows={2}
                     placeholder="List hospitals where you practice..."
