@@ -47,15 +47,16 @@ export default function DoctorProfile() {
   const [profileData, setProfileData] = useState({
     // Basic info from signup - these will be populated
     name: userName,
+    nickname: "",
     email: userEmail,
     phone: userPhone,
-    
+
     // Doctor specific fields from signup - these should be populated if available
     specialization: "",
     licenseNumber: "",
     experienceYears: "",
     consultationFee: "",
-    
+
     // Fields that will be empty initially (not asked during signup)
     dateOfBirth: "",
     gender: "",
@@ -264,6 +265,22 @@ export default function DoctorProfile() {
                       }
                       disabled={!isEditing}
                       className="mt-1"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="nickname">Nickname</Label>
+                    <Input
+                      id="nickname"
+                      value={profileData.nickname}
+                      onChange={(e) =>
+                        setProfileData((prev) => ({
+                          ...prev,
+                          nickname: e.target.value,
+                        }))
+                      }
+                      disabled={!isEditing}
+                      className="mt-1"
+                      placeholder="Enter your nickname"
                     />
                   </div>
                   <div>
