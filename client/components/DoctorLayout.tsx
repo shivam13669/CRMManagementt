@@ -207,7 +207,7 @@ export function DoctorLayout({ children }: DoctorLayoutProps) {
               <Activity className="w-5 h-5 text-white" />
             </div>
             <span className="ml-2 text-xl font-bold text-gray-900">
-              ML Support
+              AIIMS, New Delhi
             </span>
           </div>
           <Button
