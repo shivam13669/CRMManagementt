@@ -460,7 +460,7 @@ export const handleForgotPassword: RequestHandler = async (req, res) => {
       html: `
       <div style="font-family: system-ui, -apple-system, Roboto, 'Segoe UI', Arial; color:#111;">
         <div style="max-width:600px;margin:0 auto;padding:20px;border:1px solid #eee;border-radius:8px;">
-          <h2 style="color:#0b63c6">AIIMS, New Delhi — Password Reset</h2>
+          <h2 style="color:#0b63c6">ML Support — Password Reset</h2>
           <p>We received a request to reset the password for your account. Click the button below to reset it. This link expires in 1 hour.</p>
           <p style="text-align:center;margin:30px 0;"><a href="${resetLink}" style="background:#0b63c6;color:#fff;padding:12px 20px;border-radius:6px;text-decoration:none;">Reset password</a></p>
           <p>If you did not request a password reset, you can ignore this email — your password will remain unchanged.</p>

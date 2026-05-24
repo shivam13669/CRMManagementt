@@ -257,7 +257,7 @@ export function StaffLayout({ children }: StaffLayoutProps) {
               <Activity className="w-5 h-5 text-white" />
             </div>
             <span className="ml-2 text-xl font-bold text-gray-900">
-              AIIMS, New Delhi
+              ML Support
             </span>
           </div>
           <Button

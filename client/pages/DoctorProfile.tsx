@@ -47,16 +47,15 @@ export default function DoctorProfile() {
   const [profileData, setProfileData] = useState({
     // Basic info from signup - these will be populated
     name: userName,
-    nickname: "",
     email: userEmail,
     phone: userPhone,
-
+    
     // Doctor specific fields from signup - these should be populated if available
-    specialization: "Intern",
+    specialization: "",
     licenseNumber: "",
-    experienceYears: "0",
-    consultationFee: "0",
-
+    experienceYears: "",
+    consultationFee: "",
+    
     // Fields that will be empty initially (not asked during signup)
     dateOfBirth: "",
     gender: "",
@@ -81,14 +80,6 @@ export default function DoctorProfile() {
 
   const fetchUserProfile = async () => {
     try {
-      // Check if there's saved profile data in localStorage
-      const savedProfile = localStorage.getItem('doctorProfile');
-      if (savedProfile) {
-        setProfileData(JSON.parse(savedProfile));
-        setLoading(false);
-        return;
-      }
-
       const response = await authApi.getProfile();
       if (response.data?.user) {
         const user = response.data.user;
@@ -98,10 +89,10 @@ export default function DoctorProfile() {
           email: user.email || userEmail,
           phone: user.phone || userPhone,
           // Add doctor-specific fields if they exist in user data
-          specialization: user.specialization || "Intern",
+          specialization: user.specialization || "",
           licenseNumber: user.license_number || "",
-          experienceYears: user.experience_years?.toString() || "0",
-          consultationFee: user.consultation_fee?.toString() || "0",
+          experienceYears: user.experience_years?.toString() || "",
+          consultationFee: user.consultation_fee?.toString() || "",
         }));
       }
     } catch (error) {
@@ -111,20 +102,10 @@ export default function DoctorProfile() {
     }
   };
 
-  const handleSave = async () => {
-    try {
-      // Save to localStorage for persistence
-      localStorage.setItem('doctorProfile', JSON.stringify(profileData));
-
-      // Optionally, also try to save to backend
-      // const response = await authApi.updateProfile(profileData);
-
-      setIsEditing(false);
-      alert("Profile updated successfully!");
-    } catch (error) {
-      console.error('Error saving profile:', error);
-      alert("Failed to save profile. Please try again.");
-    }
+  const handleSave = () => {
+    setIsEditing(false);
+    // Here you would typically save to backend
+    alert("Profile updated successfully!");
   };
 
   const handleCancel = () => {
@@ -133,9 +114,8 @@ export default function DoctorProfile() {
   };
 
   const specializations = [
-    "Intern",
     "Cardiology",
-    "Neurology",
+    "Neurology", 
     "Oncology",
     "Pediatrics",
     "Orthopedics",
@@ -287,22 +267,6 @@ export default function DoctorProfile() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="nickname">Nickname</Label>
-                    <Input
-                      id="nickname"
-                      value={profileData.nickname}
-                      onChange={(e) =>
-                        setProfileData((prev) => ({
-                          ...prev,
-                          nickname: e.target.value,
-                        }))
-                      }
-                      disabled={!isEditing}
-                      className="mt-1"
-                      placeholder="Enter your nickname"
-                    />
-                  </div>
-                  <div>
                     <Label htmlFor="email">Email</Label>
                     <Input
                       id="email"
@@ -327,6 +291,22 @@ export default function DoctorProfile() {
                         setProfileData((prev) => ({
                           ...prev,
                           phone: e.target.value,
+                        }))
+                      }
+                      disabled={!isEditing}
+                      className="mt-1"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="dateOfBirth">Date of Birth</Label>
+                    <Input
+                      id="dateOfBirth"
+                      type="date"
+                      value={profileData.dateOfBirth}
+                      onChange={(e) =>
+                        setProfileData((prev) => ({
+                          ...prev,
+                          dateOfBirth: e.target.value,
                         }))
                       }
                       disabled={!isEditing}
@@ -371,6 +351,23 @@ export default function DoctorProfile() {
                     />
                   </div>
                 </div>
+                <div>
+                  <Label htmlFor="address">Address</Label>
+                  <Textarea
+                    id="address"
+                    value={profileData.address}
+                    onChange={(e) =>
+                      setProfileData((prev) => ({
+                        ...prev,
+                        address: e.target.value,
+                      }))
+                    }
+                    disabled={!isEditing}
+                    className="mt-1"
+                    rows={3}
+                    placeholder="Enter your address"
+                  />
+                </div>
               </CardContent>
             </Card>
 
@@ -395,7 +392,7 @@ export default function DoctorProfile() {
                           licenseNumber: e.target.value,
                         }))
                       }
-                      disabled={true}
+                      disabled={!isEditing}
                       className="mt-1"
                     />
                   </div>
@@ -409,7 +406,7 @@ export default function DoctorProfile() {
                           specialization: value,
                         }))
                       }
-                      disabled={true}
+                      disabled={!isEditing}
                     >
                       <SelectTrigger className="mt-1">
                         <SelectValue placeholder="Select specialization" />
@@ -434,7 +431,7 @@ export default function DoctorProfile() {
                           subSpecialty: e.target.value,
                         }))
                       }
-                      disabled={true}
+                      disabled={!isEditing}
                       className="mt-1"
                       placeholder="Enter sub-specialty"
                     />
@@ -450,7 +447,7 @@ export default function DoctorProfile() {
                           consultationFee: e.target.value,
                         }))
                       }
-                      disabled={true}
+                      disabled={!isEditing}
                       className="mt-1"
                     />
                   </div>
@@ -465,8 +462,24 @@ export default function DoctorProfile() {
                           experienceYears: e.target.value,
                         }))
                       }
-                      disabled={true}
+                      disabled={!isEditing}
                       className="mt-1"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="graduationYear">Graduation Year</Label>
+                    <Input
+                      id="graduationYear"
+                      value={profileData.graduationYear}
+                      onChange={(e) =>
+                        setProfileData((prev) => ({
+                          ...prev,
+                          graduationYear: e.target.value,
+                        }))
+                      }
+                      disabled={!isEditing}
+                      className="mt-1"
+                      placeholder="Enter graduation year"
                     />
                   </div>
                 </div>
@@ -481,7 +494,7 @@ export default function DoctorProfile() {
                         medicalDegree: e.target.value,
                       }))
                     }
-                    disabled={true}
+                    disabled={!isEditing}
                     className="mt-1"
                     placeholder="MBBS, MD, etc."
                   />
@@ -497,7 +510,7 @@ export default function DoctorProfile() {
                         institution: e.target.value,
                       }))
                     }
-                    disabled={true}
+                    disabled={!isEditing}
                     className="mt-1"
                     placeholder="Enter institution name"
                   />
@@ -513,7 +526,7 @@ export default function DoctorProfile() {
                         certifications: e.target.value,
                       }))
                     }
-                    disabled={true}
+                    disabled={!isEditing}
                     className="mt-1"
                     rows={3}
                     placeholder="List your certifications, awards, and recognitions..."
@@ -530,7 +543,7 @@ export default function DoctorProfile() {
                         hospitalAffiliations: e.target.value,
                       }))
                     }
-                    disabled={true}
+                    disabled={!isEditing}
                     className="mt-1"
                     rows={2}
                     placeholder="List hospitals where you practice..."

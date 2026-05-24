@@ -34,7 +34,7 @@ interface Notification {
 
 const sidebarItems = [
   { icon: Activity, label: "Dashboard", path: "/doctor-dashboard" },
-  { icon: Users, label: "My Patients", path: "/my-customers" },
+  { icon: Users, label: "My Customers", path: "/my-customers" },
   { icon: Calendar, label: "Appointments", path: "/appointments" },
   { icon: FileText, label: "Medical Reports", path: "/medical-reports" },
   { icon: MessageSquare, label: "Patient Messages", path: "/patient-messages" },
@@ -207,7 +207,7 @@ export function DoctorLayout({ children }: DoctorLayoutProps) {
               <Activity className="w-5 h-5 text-white" />
             </div>
             <span className="ml-2 text-xl font-bold text-gray-900">
-              AIIMS, New Delhi
+              ML Support
             </span>
           </div>
           <Button
@@ -227,7 +227,7 @@ export function DoctorLayout({ children }: DoctorLayoutProps) {
             </div>
             <div>
               <div className="font-medium text-gray-900">Dr. {userName}</div>
-              <div className="text-sm text-blue-600">Intern</div>
+              <div className="text-sm text-blue-600">Doctor</div>
             </div>
           </div>
         </div>
